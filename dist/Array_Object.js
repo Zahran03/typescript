@@ -18,3 +18,11 @@ let user = {
 };
 user.firstName = "rizky";
 user.id = 2;
+// Type Inference with object literals
+let person = {
+    nama: "luigi",
+    score: 45,
+};
+person.nama = "Andi";
+person.score = 31;
+const score = person.score;
