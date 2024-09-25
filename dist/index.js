@@ -1,18 +1,17 @@
 "use strict";
-// Tuples
-let orang = ["zahran", 21, true];
-// Tuples Example
-let hsla;
-hsla = [200, "100%", "50%", 1];
-let xy;
-xy = [94.5, 20.1];
-function useCoords() {
-    const lat = 100;
-    const long = 50;
-    return [lat, long];
+const authorOne = { name: "Zahran", avatar: "/dist/image1" };
+const newPost = {
+    title: "Learn Programming",
+    body: "Belajar pemograman itu asyik",
+    tags: ["coding", "design"],
+    created_at: new Date(),
+    author: authorOne,
+};
+// as function arguments type
+function createdPost(post) {
+    console.log(`created post ${post.title} by ${post.author.name}`);
 }
-const [lat, long] = useCoords();
-// Named Tuples
-let pengguna;
-pengguna = ["peaches", 25];
-console.log(pengguna[0]);
+createdPost(newPost);
+// with arrays
+let posts = [];
+posts.push(newPost);

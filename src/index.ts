@@ -1,24 +1,35 @@
-// Tuples
-let orang: [string, number, boolean] = ["zahran", 21, true];
-
-// Tuples Example
-
-let hsla: [number, string, string, number];
-hsla = [200, "100%", "50%", 1];
-
-let xy: [number, number];
-xy = [94.5, 20.1];
-
-function useCoords(): [number, number] {
-  const lat = 100;
-  const long = 50;
-
-  return [lat, long];
+// Interfaces
+interface Author {
+  name: string;
+  avatar: string;
 }
 
-const [lat, long] = useCoords();
+const authorOne: Author = { name: "Zahran", avatar: "/dist/image1" };
 
-// Named Tuples
-let pengguna: [name: string, age: number];
-pengguna = ["peaches", 25];
-console.log(pengguna[0]);
+interface Post {
+  title: string;
+  body: string;
+  tags: string[];
+  created_at: Date;
+  author: Author;
+}
+
+const newPost: Post = {
+  title: "Learn Programming",
+  body: "Belajar pemograman itu asyik",
+  tags: ["coding", "design"],
+  created_at: new Date(),
+  author: authorOne,
+};
+
+// as function arguments type
+function createdPost(post: Post): void {
+  console.log(`created post ${post.title} by ${post.author.name}`);
+}
+
+createdPost(newPost);
+
+// with arrays
+
+let posts: Post[] = [];
+posts.push(newPost);
