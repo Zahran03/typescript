@@ -1,35 +1,34 @@
-// Interfaces
-interface Author {
+// Type Aliases
+
+type Rgba = [number, number, number];
+
+function getRandomColor(): Rgba {
+  const r = Math.floor(Math.random() * 255);
+  const g = Math.floor(Math.random() * 255);
+  const b = Math.floor(Math.random() * 255);
+
+  return [r, g, b];
+}
+
+const colorOne = getRandomColor();
+const colorTwo = getRandomColor();
+console.log(colorOne, colorTwo);
+
+// object literal
+
+type User = {
   name: string;
-  avatar: string;
-}
-
-const authorOne: Author = { name: "Zahran", avatar: "/dist/image1" };
-
-interface Post {
-  title: string;
-  body: string;
-  tags: string[];
-  created_at: Date;
-  author: Author;
-}
-
-const newPost: Post = {
-  title: "Learn Programming",
-  body: "Belajar pemograman itu asyik",
-  tags: ["coding", "design"],
-  created_at: new Date(),
-  author: authorOne,
+  age: number;
 };
 
-// as function arguments type
-function createdPost(post: Post): void {
-  console.log(`created post ${post.title} by ${post.author.name}`);
+const userOne: User = {
+  name: "Zahran",
+  age: 21,
+};
+
+function formatUser(user: User): void {
+  console.log(`${user.name} is ${user.age} years old`);
 }
 
-createdPost(newPost);
-
-// with arrays
-
-let posts: Post[] = [];
-posts.push(newPost);
+formatUser(userOne);
+formatUser({ name: "rehan", age: 21 });

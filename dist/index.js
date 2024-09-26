@@ -1,17 +1,20 @@
 "use strict";
-const authorOne = { name: "Zahran", avatar: "/dist/image1" };
-const newPost = {
-    title: "Learn Programming",
-    body: "Belajar pemograman itu asyik",
-    tags: ["coding", "design"],
-    created_at: new Date(),
-    author: authorOne,
-};
-// as function arguments type
-function createdPost(post) {
-    console.log(`created post ${post.title} by ${post.author.name}`);
+// Type Aliases
+function getRandomColor() {
+    const r = Math.floor(Math.random() * 255);
+    const g = Math.floor(Math.random() * 255);
+    const b = Math.floor(Math.random() * 255);
+    return [r, g, b];
 }
-createdPost(newPost);
-// with arrays
-let posts = [];
-posts.push(newPost);
+const colorOne = getRandomColor();
+const colorTwo = getRandomColor();
+console.log(colorOne, colorTwo);
+const userOne = {
+    name: "Zahran",
+    age: 21,
+};
+function formatUser(user) {
+    console.log(`${user.name} is ${user.age} years old`);
+}
+formatUser(userOne);
+formatUser({ name: "rehan", age: 21 });
