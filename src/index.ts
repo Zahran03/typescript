@@ -1,34 +1,37 @@
-// Type Aliases
+// Type Guard
 
-type Rgba = [number, number, number];
+type id = number | string;
 
-function getRandomColor(): Rgba {
-  const r = Math.floor(Math.random() * 255);
-  const g = Math.floor(Math.random() * 255);
-  const b = Math.floor(Math.random() * 255);
-
-  return [r, g, b];
+function swapIdType(id: Id): Id {
+  if (typeof id === "string") {
+    return parseInt(id);
+  } else {
+    return id.toString();
+  }
 }
 
-const colorOne = getRandomColor();
-const colorTwo = getRandomColor();
-console.log(colorOne, colorTwo);
+const idOne = swapIdType(1);
+const idTwo = swapIdType("2");
 
-// object literal
-
-type User = {
-  name: string;
+// Tagged union types
+interface Users {
+  type: "user";
+  username: string;
+  email: string;
+  id: Id;
+}
+interface Person {
+  type: "person";
+  firstname: string;
   age: number;
-};
-
-const userOne: User = {
-  name: "Zahran",
-  age: 21,
-};
-
-function formatUser(user: User): void {
-  console.log(`${user.name} is ${user.age} years old`);
+  id: Id;
 }
 
-formatUser(userOne);
-formatUser({ name: "rehan", age: 21 });
+function logDetails(value: Users | Person): void {
+  if (value.type === "user") {
+    console.log(value.email, value.username);
+  }
+  if (value.type === "person") {
+    console.log(value.firstname, value.age);
+  }
+}

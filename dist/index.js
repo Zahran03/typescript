@@ -1,20 +1,20 @@
 "use strict";
-// Type Aliases
-function getRandomColor() {
-    const r = Math.floor(Math.random() * 255);
-    const g = Math.floor(Math.random() * 255);
-    const b = Math.floor(Math.random() * 255);
-    return [r, g, b];
+// Type Guard
+function swapIdType(id) {
+    if (typeof id === "string") {
+        return parseInt(id);
+    }
+    else {
+        return id.toString();
+    }
 }
-const colorOne = getRandomColor();
-const colorTwo = getRandomColor();
-console.log(colorOne, colorTwo);
-const userOne = {
-    name: "Zahran",
-    age: 21,
-};
-function formatUser(user) {
-    console.log(`${user.name} is ${user.age} years old`);
+const idOne = swapIdType(1);
+const idTwo = swapIdType("2");
+function logDetails(value) {
+    if (value.type === "user") {
+        console.log(value.email, value.username);
+    }
+    if (value.type === "person") {
+        console.log(value.firstname, value.age);
+    }
 }
-formatUser(userOne);
-formatUser({ name: "rehan", age: 21 });
