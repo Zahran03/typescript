@@ -35,3 +35,5 @@ function logDetails(value: Users | Person): void {
     console.log(value.firstname, value.age);
   }
 }
+
+console.log("test");
