@@ -18,4 +18,3 @@ function logDetails(value) {
         console.log(value.firstname, value.age);
     }
 }
-console.log("test");
